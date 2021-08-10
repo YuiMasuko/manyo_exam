@@ -1,18 +1,5 @@
-<h2>タスクの投稿</h2>
+<h1>タスク投稿</h1>
 
-<%= form_with(model: @task, local: true) do |f|%>
-<%= render 'layouts/error_messages', model: f.object %>
+<%= render 'form', task: @task %>
 
-<div class="form-group">
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-</div>
-
-<div class="form-group">
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-</div>
-
-<%= f.submit "投稿する" %>
-
-<% end %>
+<%= link_to 'Back', tasks_path %>
