@@ -8,8 +8,8 @@
     </tr>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
+        <td class="task_row"><%= task.title %></td>
+        <td class="task_row"><%= task.content %></td>
         <td><%= link_to '詳細', task %></td>
         <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
