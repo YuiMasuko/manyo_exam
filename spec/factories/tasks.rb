@@ -4,7 +4,6 @@ FactoryBot.define do
     content {'test_content'}
     expired_at {'2021-08-12 00:00:00'}
     status {'未着手'}
-
   end
   factory :second_task, class: Task do
     title {'test2_title'}
