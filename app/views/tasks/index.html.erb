@@ -1,6 +1,7 @@
 <h1>タスク一覧</h1>
 <%= link_to '新規投稿', new_task_path %>
-<%= link_to "終了期限",tasks_path(sort_expired: "true") %>
+<%= link_to "終了期限ソート",tasks_path(sort_expired: "true") %>
+<%= link_to "優先順位ソート",tasks_path(sort_priority: "true") %>
 
 <div>
   <h3>検索</h3>
@@ -21,6 +22,7 @@
       <th>内容</th>
       <th>終了期限</th>
       <th>ステータス</th>
+      <th>優先順位</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
@@ -28,6 +30,7 @@
         <td class="task_row"><%= task.content %></td>
         <td class="task_row"><%= task.expired_at %></td>
         <td class="task_row"><%= task.status %></td>
+        <td class="task_row"><%= task.priority %></td>
         <td><%= link_to '詳細', task %></td>
         <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
