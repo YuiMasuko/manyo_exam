@@ -31,6 +31,14 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list[0]).to have_content 'new'
       end
     end
+    context 'タスクが終了期限の降順に並んでいる場合' do
+      it '終了期限が遠いタスクが一番上に表示される' do
+        task = FactoryBot.create(:task, title: 'limit_far', expired_at:'2021-09-12 00:00:00')
+        visit tasks_path
+        task_list = all('.task_row')
+        expect(task_list[0]).to have_content 'limit_far'
+      end
+    end
   end
 
   describe '詳細表示機能' do
