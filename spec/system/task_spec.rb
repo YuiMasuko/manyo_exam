@@ -11,9 +11,12 @@ RSpec.describe 'タスク管理機能', type: :system do
       visit new_task_path
       fill_in "task[title]", with: "test_title"
       fill_in "task[content]", with: "test_content"
+      fill_in 'task[expired_at]', with: '2021-08-11 00:00:00'.to_date
+      find('.field_status').set(1)
       click_on "submit"
       expect(page).to have_content "test_title"
       expect(page).to have_content "test_content"
+      expect(page).to have_content "未着手"
       end
     end
   end
