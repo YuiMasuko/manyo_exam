@@ -3,12 +3,16 @@
 <%= render 'layouts/error_messages', model: form.object %>
 
 <div class="field">
-  <%= form.label :title %>
+  <%= form.label :タスク名 %>
   <%= form.text_field :title %>
 </div>
 <div class="field">
-  <%= form.label :content %>
+  <%= form.label :内容 %>
   <%= form.text_area :content %>
+</div>
+<div class="field">
+  <%= form.label :終了期限 %>
+  <%= form.datetime_select :expired_at %>
 </div>
 
 <div class="actions">

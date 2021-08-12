@@ -5,11 +5,13 @@
     <tr>
       <th>タスク名</th>
       <th>内容</th>
+      <th>終了期限</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
         <td class="task_row"><%= task.title %></td>
         <td class="task_row"><%= task.content %></td>
+        <td class="task_row"><%= task.expired_at %></td>
         <td><%= link_to '詳細', task %></td>
         <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
