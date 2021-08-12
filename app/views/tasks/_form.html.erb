@@ -1,21 +1,21 @@
 <%= form_with(model: @task, local: true) do |form| %>
 
-<%= render 'layouts/error_messages', model: form.object %>
+  <%= render 'layouts/error_messages', model: form.object %>
 
-<div class="field">
-  <%= form.label :タスク名 %>
-  <%= form.text_field :title %>
-</div>
-<div class="field">
-  <%= form.label :内容 %>
-  <%= form.text_area :content %>
-</div>
-<div class="field">
-  <%= form.label :終了期限 %>
-  <%= form.datetime_select :expired_at %>
-</div>
+  <div class="field">
+    <%= form.label :タスク名 %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :内容 %>
+    <%= form.text_area :content %>
+  </div>
+  <div class="field">
+    <%= form.label :終了期限 %>
+    <%= form.date_field :expired_at %>
+  </div>
 
-<div class="actions">
-  <%= form.submit "submit" %>
-</div>
+  <div class="actions">
+    <%= form.submit "submit" %>
+  </div>
 <% end %>
