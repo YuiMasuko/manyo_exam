@@ -4,6 +4,7 @@
 <%= link_to "終了期限ソート",tasks_path(sort_expired: "true") %>
 <%= link_to "優先順位ソート",tasks_path(sort_priority: "true") %>
 </div>
+
 <div class="search">
   <h3>検索</h3>
   <%= form_with model: @task, method: :get, local: true do |form| %>
@@ -16,6 +17,7 @@
     <%= link_to '検索終了', tasks_path %>
   <% end %>
 </div>
+
 <div class="index_main">
   <table>
     <tr>
