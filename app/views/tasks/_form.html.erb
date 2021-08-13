@@ -1,29 +1,31 @@
 <%= form_with(model: @task, local: true) do |form| %>
+  <div class="form_group pt-4 pb-3">
+    <%= render 'layouts/error_messages', model: form.object %>
 
-  <%= render 'layouts/error_messages', model: form.object %>
-
-  <div class="field">
-    <%= form.label :タスク名 %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="field">
-    <%= form.label :内容 %>
-    <%= form.text_area :content %>
-  </div>
-  <div class="field">
-    <%= form.label :終了期限 %>
-    <%= form.date_field :expired_at %>
-  </div>
-  <div class="field_status">
-    <%= form.label :ステータス %>
-    <%= form.select :status, Task.statuses.keys.to_a, {} %>
-  </div>
-  <div class="field_priorty">
-    <%= form.label :優先順位 %>
-    <%= form.select :priority, Task.priorities.keys.to_a, {} %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "submit" %>
+    <div class="conteiner">
+      <div class="field">
+        <%= form.label :タスク名 %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :内容 %>
+        <%= form.text_area :content, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :終了期限 %>
+        <%= form.date_field :expired_at, class: "form-control" %>
+      </div>
+      <div class="field_status">
+        <%= form.label :ステータス %>
+        <%= form.select :status, Task.statuses.keys.to_a, {} ,class: "form-control" %>
+      </div>
+      <div class="field_priorty">
+        <%= form.label :優先順位 %>
+        <%= form.select :priority, Task.priorities.keys.to_a, {} , class: "form-control"%>
+      </div>
+    </div>
+    <div class="actions">
+      <%= form.submit "submit", class:"btn btn-primary"%>
+    </div>
   </div>
 <% end %>
