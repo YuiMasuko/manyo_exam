@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   before_action :login_required
   before_action :forbid_login_user
+
   private
   def login_required
     redirect_to new_session_path unless current_user
