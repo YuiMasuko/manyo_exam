@@ -39,6 +39,11 @@ class TasksController < ApplicationController
   def show
   end
 
+  def confirm
+    @task = Task.new(task_params)
+    render :new if @task.invalid?
+  end
+
   def edit
   end
 
