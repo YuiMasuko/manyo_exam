@@ -24,7 +24,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    # @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if params[:back]
       render :new
     else
@@ -40,7 +41,7 @@ class TasksController < ApplicationController
   end
 
   def confirm
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     render :new if @task.invalid?
   end
 
@@ -65,6 +66,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
   def task_params
-    params.require(:task).permit(:task, :title, :content, :expired_at, :status, :priority)
+    params.require(:task).permit(:task, :title, :content, :expired_at, :status, :priority, :user)
   end
+  def ensure_user
+    @tasks = current_user.tasks
+    @task = @tasks.find_by(id: params[:id])
+    redirect_to new_task_path unless @task
+end
 end
