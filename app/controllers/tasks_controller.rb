@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy]
+  before_action :authenticate_user, only: %i[edit update destroy]
 
   def index
     if params[:sort_expired]
@@ -24,7 +25,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    # @task = Task.new(task_params)
     @task = current_user.tasks.build(task_params)
     if params[:back]
       render :new
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to new_task_path, notice: "編集しました！"
+      redirect_to tasks_path, notice: "編集しました！"
     else
       render :edit
     end
@@ -72,5 +72,5 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks
     @task = @tasks.find_by(id: params[:id])
     redirect_to new_task_path unless @task
-end
+  end
 end

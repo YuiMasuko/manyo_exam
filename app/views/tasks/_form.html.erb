@@ -23,9 +23,9 @@
         <%= form.label :優先順位 %>
         <%= form.select :priority, Task.priorities.keys.to_a, {} , class: "form-control"%>
       </div>
-    </div>
-    <div class="actions">
-      <%= form.submit '送信', class:"btn btn-primary"%>
+      <div class="actions">
+        <%= form.submit '送信', class:"btn btn-primary"%>
+      </div>
     </div>
   </div>
 <% end %>
