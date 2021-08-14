@@ -7,7 +7,7 @@
 | title | string |
 | content | string |
 | priority | integer |
-| limit | datetime |
+| expired_at | datetime |
 | status | integer |
 | user_id | bigint |
 

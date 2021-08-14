@@ -1,6 +1,10 @@
-<h1>タスク編集</h1>
+<div>
+  <div class="col-md-4 offset-md-4">
+    <h2 class="text-center pt-5">タスク編集</h2>
 
-<%= render 'form', picture: @task %>
+    <%= render 'form', picture: @task %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+    <%= link_to '削除', task_path(@task.id), method: :delete, data: { confirm: '本当に削除しますか?' } %> |
+    <%= link_to '戻る', tasks_path %>
+  </div>
+</div>
