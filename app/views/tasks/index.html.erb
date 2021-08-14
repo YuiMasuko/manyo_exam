@@ -9,7 +9,7 @@
         </span>
         <span class="col-md-offset-1 col-md-3">
           <%= form.label :'ステータス' %>
-          <%= form.select :search_status, Task.statuses.keys {}%>
+          <%= form.select :search_status, Task.statuses.keys.to_a,include_blank: true %>
         </span>
         <span class="col-md-1">
           <%= form.submit '検索', name: 'search' ,class:"btn btn-warning"%>
