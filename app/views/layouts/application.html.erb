@@ -4,28 +4,33 @@
     <title>ManyoApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <% if logged_in? %>
-          <%= link_to "タスク登録", new_task_path, class: "nav-item nav-link" %>
-          <%= link_to "タスク一覧", tasks_path, class: "nav-item nav-link" %>
-          <%= link_to "アカウト詳細", user_path(current_user.id), class: "nav-item nav-link" %>
-          <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-item nav-link" %>
-        <% else %>
-          <%= link_to "ユーザー登録", new_user_path, class: "nav-item nav-link" %>
-          <%= link_to "ログイン", new_session_path, class: "nav-item nav-link" %>
-          <%= link_to "タスク一覧", tasks_path, class: "nav-item nav-link" %>
+      <div class="alert alert-warning" role="alert">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
         <% end %>
       </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <li class="active"><%= link_to "タスク登録", new_task_path %></li>
+            <li class="active"><%= link_to "タスク一覧", tasks_path %>
+            <li class="active"><%= link_to "アカウト詳細", user_path(current_user.id) %></li>
+            <li class="active"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li class="active"><%= link_to "ユーザー登録", new_user_path %></li>
+            <li class="active"><%= link_to "ログイン", new_session_path %></li>
+            <li class="active"><%= link_to "タスク一覧", tasks_path %></li>
+          <% end %>
+        </div>
+      </nav>
     </header>
     <div class="container">
       <%= yield %>
