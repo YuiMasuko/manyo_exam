@@ -3,6 +3,7 @@
     <div class="user">
       <h3><%= @user.name %>のページ</h3>
       <p>メールアドレス: <%= @user.email %></p>
+      <p>管理者権限：<%= @user.admin == true ? 'あり' : 'なし' %></p>
     </div>
 
     <div class="choice">

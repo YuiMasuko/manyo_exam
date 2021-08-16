@@ -68,9 +68,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:task, :title, :content, :expired_at, :status, :priority, :user)
   end
-  def ensure_user
-    @tasks = current_user.tasks
-    @task = @tasks.find_by(id: params[:id])
-    redirect_to new_task_path unless @task
-  end
 end

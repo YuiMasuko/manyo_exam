@@ -1,6 +1,7 @@
 1.times do |n|
   name = Faker::Artist.name
   email = Faker::Internet.email
-  password_digest = "password"
-  User.create!(name: name, email: email, password_digest: "password")
+  password = "password"
+  password_confirmation = "password"
+  User.create!(name: name, email: email, password: password, password_confirmation: password_confirmation, admin: true)
 end
