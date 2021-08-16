@@ -1,14 +1,14 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
   let!(:basic_user) { FactoryBot.create(:basic_user) }
+  let!(:task) { FactoryBot.create(:task, user:basic_user) }
+  let!(:second_task) { FactoryBot.create(:second_task, user: basic_user) }
   before do
     visit new_session_path
     fill_in 'session[email]', with: 'basic_email@gmail.com'
     fill_in 'session[password]', with:'basicuser'
     click_button 'ログイン'
   end
-  let!(:task) { FactoryBot.create(:task, user:basic_user) }
-  let!(:second_task) { FactoryBot.create(:second_task, user: basic_user) }
   describe '新規作成機能' do
     context 'タスクを新規作成した場合' do
       it '作成したタスクが表示される' do
@@ -94,7 +94,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it "検索キーワードをタイトルに含み、かつステータスに完全一致するタスク絞り込まれる" do
         fill_in 'search_title', with: 'task'
         select '未着手', from: 'search_status'
-        click_on '検索'
+        click_button '検索'
         expect(page).to have_content 'task'
         expect(page).to have_content '未着手'
       end
