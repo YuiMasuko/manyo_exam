@@ -26,3 +26,6 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_path, notice:"ログインが必要です"
     end
   end
+  def logined_not_user_new
+    redirect_to tasks_path, notice:"ユーザー新規作成の場合はログアウトしてください" if logged_in?
+  end
