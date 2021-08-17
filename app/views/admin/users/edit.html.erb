@@ -13,8 +13,8 @@
       <%= f.label :admin, "管理者権限" %>
       <%= f.select :admin ,[['一般',false],['管理者',true]] %>
     </div>
-    <div class="submit_record">
-      <%= f.submit "内容変更", class:"btn btn-primary" %>
+    <div class="admin_user_update">
+      <%= f.submit 'アカウント更新', class:"btn btn-primary" %>
     </div>
     <% end %>
   <%= link_to '戻る', admin_users_path ,class: "btn btn-default"  %>
