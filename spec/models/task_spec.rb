@@ -3,26 +3,27 @@ describe 'タスクモデル機能', type: :model do
   describe 'バリデーションのテスト' do
     context 'タスクのタイトルが空の場合' do
       it 'バリデーションにひっかる' do
-        task = Task.new(title: '', content: '失敗テスト')
+        task = Task.new(title: '', content: 'テストNG', expired_at: '2021-08-10 00:00:00', status: '着手中', priority: '中')
         expect(task).not_to be_valid
       end
     end
     context 'タスクの詳細が空の場合' do
       it 'バリデーションにひっかかる' do
-        task = Task.new(title: "失敗テスト", content: "")
+        task = Task.new(title: 'テストNG', content: '')
         expect(task).to be_invalid
       end
     end
     context 'タスクのタイトルと詳細に内容が記載されている場合' do
       it 'バリデーションが通る' do
-        task = Task.new(title: "成功テスト", content: "成功テスト", expired_at: '2021-05-01 00:00:00', status: 1)
+        task = Task.new(title: 'テストOK', content: 'テストOK', expired_at: '2021-05-01 00:00:00')
         expect(task).to be_valid
       end
     end
   end
   describe '検索機能' do
-    let!(:task) { FactoryBot.create(:task, title: 'task', expired_at: '2021-08-10 00:00:00', status: '未着手') }
-    let!(:second_task) { FactoryBot.create(:second_task, title: "sample", expired_at: '2021-08-10 00:00:00', status: '着手中') }
+    let!(:basic_user) { FactoryBot.create(:basic_user) }
+    let!(:task) { FactoryBot.create(:task, title: 'task', expired_at: '2021-08-10 00:00:00', status: '未着手', priority: '中', user:basic_user) }
+    let!(:second_task) { FactoryBot.create(:second_task, title: 'sample', expired_at: '2021-08-10 00:00:00', status: '着手中', priority: '中', user:basic_user) }
     context 'scopeメソッドでタイトルのあいまい検索をした場合' do
       it "検索キーワードを含むタスクが絞り込まれる" do
         expect(Task.search_title('task')).to include(task)

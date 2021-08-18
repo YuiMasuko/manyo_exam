@@ -74,6 +74,8 @@ $ heroku buildpacks:add --index 1 heroku/nodejs
 8. Herokuにデプロイ
 ```
 $ git push heroku-18 master
+（ブランチをheroku masterにデプロイする場合）
+$ git push heroku-18 ブランチ名:master
 ```
 
 9. データベースの移行

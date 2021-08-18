@@ -1,30 +1,21 @@
-<h1>タスク一覧</h1>
+<h2>タスク一覧</h2>
 <div class="container">
-  <div class="index_search">
-    <%= form_with model: @task, method: :get, local: true do |form| %>
-      <div class="row">
-        <span class="col-md-5">
-          <%= form.label :'タスク名' %>
-          <%= form.text_field :search_title%>
-        </span>
-        <span class="col-md-offset-1 col-md-3">
-          <%= form.label :'ステータス' %>
-          <%= form.select :search_status, Task.statuses.keys {}%>
-        </span>
-        <span class="col-md-1">
-          <%= form.submit '検索', name: 'search' ,class:"btn btn-warning"%>
-        </span>
-        <span class="col-md-offset-1 col-md-1">
-          <%= link_to '検索終了', tasks_path ,class:"btn btn-primary btn-xs"%>
-        </span>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="container">
+  <form class="form-inline">
+    <div class="form-group">
+      <%= form_with model: @task, method: :get, local: true do |form| %>
+        <%= form.label :'タスク名' %>
+        <%= form.text_field :search_title, class:"form-control" %>
+        <%= form.label :'ステータス' %>
+        <%= form.select :search_status, Task.statuses.keys.to_a, { include_blank: '選択してください'}, class: 'form-control' %>
+        <%= form.submit '検索', name: 'search' ,class:"btn btn-success"%>
+        <%= link_to '検索終了', tasks_path ,class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </form>
   <div class="new_btn">
-    <%= link_to '新規投稿', new_task_path, class:"btn btn-primary" %>
+    <div class="row">
+      <%= link_to '新規投稿', new_task_path, class:"btn btn-primary" %>
+    </div>
   </div>
 </div>
 
@@ -36,6 +27,7 @@
       <th><%= link_to "終了期限▼",tasks_path(sort_expired: "true") %></th>
       <th>ステータス</th>
       <th><%= link_to "優先順位▼",tasks_path(sort_priority: "true") %></th>
+      <th>作成者</th>
       <th></th>
       <th></th>
       <th></th>
@@ -44,12 +36,13 @@
       <tr>
         <td class="task_row"><%= task.title %></td>
         <td class="task_row"><%= task.content %></td>
-        <td class="task_row"><%= task.expired_at %></td>
+        <td class="task_row"><%= l task.expired_at %></td>
         <td class="task_row"><%= task.status %></td>
         <td class="task_row"><%= task.priority %></td>
-        <td><%= link_to '詳細', task, class:"btn btn-primary btn-xs" %></td>
-        <td><%= link_to '編集', edit_task_path(task.id), class:"btn btn-success btn-xs" %></td>
-        <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか?' } ,class:"btn btn-danger btn-xs"%></td>
+        <td class="task_row"><%= task.user.name %></td>
+        <td><button type="button" class="btn btn-outline-primary"><%= link_to '詳細', task %></button></td>
+        <td><button type="button" class="btn btn-outline-success"><%= link_to '編集', edit_task_path(task.id) %></button></td>
+        <td><button type="button" class="btn btn-outline-primary"><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか?' } %></button></td>
       </tr>
     <% end %>
   </table>

@@ -22,6 +22,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -37,3 +38,4 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari', '~> 0.17.0'
+gem 'bcrypt'
