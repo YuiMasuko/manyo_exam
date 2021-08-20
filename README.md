@@ -24,10 +24,9 @@
 | カラム名 | データ型 |
 | -------- | -------- |
 | name | string |
-| user_id | bigint |
 
-### linksテーブル
-*モデル名：Link*
+### labelingsテーブル
+*モデル名：Labeling*
 | カラム名 | データ型 |
 | -------- | -------- |
 | task_id | bigint |
