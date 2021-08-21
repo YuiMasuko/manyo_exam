@@ -19,9 +19,15 @@
         <%= form.label :ステータス %>
         <%= form.select :status, Task.statuses.keys.to_a, {} ,class: "form-control" %>
       </div>
-      <div class="field_priorty">
+      <div class="field_priority">
         <%= form.label :優先順位 %>
         <%= form.select :priority, Task.priorities.keys.to_a, {} , class: "form-control"%>
+      </div>
+      <div class="field_label">
+        <% Label.all.each do |label| %>
+          <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+          <%= label.name %>
+        <% end %>
       </div>
       <div class="actions">
         <%= form.submit '送信', class:"btn btn-primary" %>

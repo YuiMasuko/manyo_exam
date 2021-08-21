@@ -18,6 +18,10 @@
       <%= form.hidden_field :priority %>
       <p>優先順位:<%= @task.priority %></p>
 
+      <% @task.label_ids.each do |id| %>
+        <%= form.hidden_field_tag :label_ids, multiple: true %>
+      <% end %>
+
       <%= form.submit '作成する' %>
       <%= form.submit '戻る', name: 'back' %>
     <% end %>
