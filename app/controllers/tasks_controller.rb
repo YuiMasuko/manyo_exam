@@ -26,7 +26,6 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(task_params)
-    binding.pry
     if params[:back]
       render :new
     else
