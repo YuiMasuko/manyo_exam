@@ -17,6 +17,8 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.search_title(params[:search_title]).page(params[:page])
     elsif params[:search_status].present?
       @tasks = current_user.tasks.search_status(params[:search_status]).page(params[:page])
+    elsif params[:label_id].present?
+      @tasks = Task.joins(:labels).where(labels:{id: params[:label_id]}).page(params[:page])
     end
   end
 
@@ -42,7 +44,6 @@ class TasksController < ApplicationController
 
   def confirm
     @task = current_user.tasks.build(task_params)
-    binding.pry
     render :new if @task.invalid?
   end
 
