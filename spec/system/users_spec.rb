@@ -57,7 +57,6 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         FactoryBot.create(:basic_user)
         FactoryBot.create(:basic2_user)
         click_link '管理者用一覧ページ'
-        binding.pry
       end
       it '管理画面にアクセスできること' do
         expect(page).to have_content '管理画面'
@@ -77,7 +76,6 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       end
       it 'ユーザの編集画面からユーザを編集できること' do
         all('.admin_index')[2].click_on '編集'
-        binding.pry
         fill_in 'user[name]', with: 'edit_user'
         fill_in 'user[email]', with: 'edit_mail@gmail.com'
         fill_in 'user[password]', with: 'password'
