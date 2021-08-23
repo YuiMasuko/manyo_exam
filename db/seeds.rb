@@ -1,5 +1,4 @@
 User.create!(name: "yui", email: "yuiyui@m.com", password: "password", password_confirmation: "password", admin: true)
-
 9.times do |n|
   name = Faker::Artist.name
   email = Faker::Internet.email
@@ -7,13 +6,11 @@ User.create!(name: "yui", email: "yuiyui@m.com", password: "password", password_
   password_confirmation = "password"
   User.create!(name: name, email: email, password: password, password_confirmation: password_confirmation, admin: false)
 end
-
 10.times do |n|
   Label.create!(
     name: "ラベル#{n + 1}"
   )
 end
-
 10.times do |n|
   user_id = n + 1
   Task.create!(
