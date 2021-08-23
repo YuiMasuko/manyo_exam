@@ -22,7 +22,6 @@ describe 'タスクモデル機能', type: :model do
   end
   describe '検索機能' do
     let!(:basic_user) { FactoryBot.create(:basic_user) }
-    binding.pry
     let!(:task) { FactoryBot.create(:task, title: 'task_check', expired_at: '2021-08-10 00:00:00', status: '完了', priority: '中', user:basic_user) }
     let!(:second_task) { FactoryBot.create(:second_task, title: 'sample', expired_at: '2021-08-10 00:00:00', status: '着手中', priority: '中', user:basic_user) }
     context 'scopeメソッドでタイトルのあいまい検索をした場合' do
