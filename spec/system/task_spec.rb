@@ -17,7 +17,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       fill_in 'task[content]', with: 'test_content'
       fill_in 'task[expired_at]', with: '2021-08-11 00:00:00'.to_date
       find('.field_status').set('着手中')
-      find('.field_priorty').set('中')
+      find('.field_priority').set('中')
       click_button '送信'
       click_button '作成する'
       expect(page).to have_content 'test_title'
